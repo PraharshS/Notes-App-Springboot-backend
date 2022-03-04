@@ -14,4 +14,5 @@ public class NotesController {
     public String hello() {
         return "hello from spring boot";
     }
+
 }
