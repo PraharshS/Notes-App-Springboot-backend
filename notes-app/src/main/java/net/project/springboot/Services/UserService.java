@@ -18,9 +18,9 @@ public class UserService {
         return userRepository.save(user);
     }
 
-    public User findUser(User user) {
+    public User findUser(String username) {
         // username is username= when sent from node
-        List<User> userList = userRepository.findByUsername(user.getUsername());
+        List<User> userList = userRepository.findByUsername(username);
         if (userList.isEmpty()) {
             return new User();
         }
