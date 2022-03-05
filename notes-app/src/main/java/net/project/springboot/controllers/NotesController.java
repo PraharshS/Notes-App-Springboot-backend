@@ -1,18 +1,36 @@
 package net.project.springboot.controllers;
 
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import net.project.springboot.Services.NoteService;
+import net.project.springboot.models.Note;
+import net.project.springboot.models.User;
+
 @CrossOrigin(origins = "http://localhost:3000")
 @RestController
-@RequestMapping("/api/v1")
+@RequestMapping("/api/v1/note")
 public class NotesController {
-    // hello
-    @GetMapping("/hello")
-    public String hello() {
-        return "hello from spring boot";
+    @Autowired
+    private NoteService noteService;
+
+    @PostMapping("get-all")
+    public List<Note> getAllNotesByUser(@RequestBody User user) {
+        System.out.println(user.toString());
+        return noteService.getAllNotesByUser(user);
+    }
+
+    @PostMapping("/add")
+    public Note addNote(@RequestBody Note note) {
+        noteService.addNote(note);
+        return note;
     }
 
 }
