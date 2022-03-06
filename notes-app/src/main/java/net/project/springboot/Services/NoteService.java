@@ -17,8 +17,8 @@ public class NoteService {
     @Autowired
     private NoteRepository noteRepository;
 
-    public void addNote(Note note) {
-        noteRepository.save(note);
+    public Note addNote(Note note) {
+        return noteRepository.save(note);
     }
 
     public List<Note> getAllNotesByUser(User user) {

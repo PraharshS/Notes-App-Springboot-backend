@@ -26,14 +26,12 @@ public class NotesController {
 
     @PostMapping("get-all")
     public List<Note> getAllNotesByUser(@RequestBody User user) {
-        System.out.println(user.toString());
         return noteService.getAllNotesByUser(user);
     }
 
-    @PostMapping("/add")
+    @PostMapping("")
     public Note addNote(@RequestBody Note note) {
-        noteService.addNote(note);
-        return note;
+        return noteService.addNote(note);
     }
 
     @DeleteMapping("/{id}")
