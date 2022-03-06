@@ -16,18 +16,17 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 public class Note {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private int id;
+    private Integer id;
     @ManyToOne(fetch = FetchType.LAZY)
     @JsonIgnoreProperties(value = { "notes", "hibernateLazyInitializer" })
-    @JsonIgnore
     private User user;
     private String message;
 
-    public long getId() {
+    public Integer getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(Integer id) {
         this.id = id;
     }
 

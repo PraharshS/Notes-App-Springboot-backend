@@ -1,8 +1,11 @@
 package net.project.springboot.Services;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
 import net.project.springboot.models.Note;
@@ -19,6 +22,14 @@ public class NoteService {
     }
 
     public List<Note> getAllNotesByUser(User user) {
-        return noteRepository.findByUserId((int) user.getId());
+        return noteRepository.findByUserId(user.getId());
+    }
+
+    public ResponseEntity<Map<String, Boolean>> deleteNote(Integer id) {
+        Note note = noteRepository.findById(id).orElseThrow();
+        noteRepository.delete(note);
+        Map<String, Boolean> response = new HashMap<>();
+        response.put("deleted", Boolean.TRUE);
+        return ResponseEntity.ok(response);
     }
 }

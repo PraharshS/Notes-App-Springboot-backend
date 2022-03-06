@@ -9,6 +9,6 @@ import net.project.springboot.models.Note;
 import net.project.springboot.models.User;
 
 @Repository
-public interface NoteRepository extends JpaRepository<Note, Long> {
-    List<Note> findByUserId(int userId);
+public interface NoteRepository extends JpaRepository<Note, Integer> {
+    List<Note> findByUserId(Integer userId);
 }
