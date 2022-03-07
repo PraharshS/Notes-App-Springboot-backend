@@ -20,27 +20,27 @@ import net.project.springboot.models.User;
 
 @CrossOrigin(origins = "http://localhost:3000")
 @RestController
-@RequestMapping("/api/v1/note")
+@RequestMapping("/api/v1")
 public class NotesController {
     @Autowired
     private NoteService noteService;
 
-    @PostMapping("get-all")
+    @PostMapping("/notes")
     public List<Note> getAllNotesByUser(@RequestBody User user) {
         return noteService.getAllNotesByUser(user);
     }
 
-    @PostMapping("")
+    @PostMapping("/note")
     public Note addNote(@RequestBody Note note) {
         return noteService.addNote(note);
     }
 
-    @PutMapping("/{id}")
+    @PutMapping("/note/{id}")
     public ResponseEntity<Note> updateNote(@PathVariable Integer id, @RequestBody Note updatedNote) {
         return noteService.updateNote(id, updatedNote);
     }
 
-    @DeleteMapping("/{id}")
+    @DeleteMapping("/note/{id}")
     public ResponseEntity<Map<String, Boolean>> deleteNote(@PathVariable Integer id) {
         return noteService.deleteNote(id);
     }
