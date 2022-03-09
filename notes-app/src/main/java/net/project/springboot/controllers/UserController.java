@@ -26,7 +26,7 @@ public class UserController {
     @PostMapping("/findByUsername")
     public User findByUsername(@RequestBody String username) {
         // String coming with double quotes
-        username = username.replaceAll("\"", "");
+        username = username.replace("\"", "");
         return userService.findUser(username);
     }
 
